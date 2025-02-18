@@ -12,7 +12,8 @@ class Program
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("1. Gráfica de barras con asteriscos");
         Console.WriteLine("2. Espiral de asteriscos");
-        Console.WriteLine("2. Salir");
+        Console.WriteLine("3. Cuadrado con asteriscos");
+        Console.WriteLine("0. Salir");
         Console.ForegroundColor = ConsoleColor.White;
         Console.Write("\nSelecciona una opción: ");
         opcion = int.Parse(Console.ReadLine());
@@ -27,6 +28,10 @@ class Program
                 DibujarEspiral();
                 break;
             case 3:
+                Console.Clear();
+                DrawSquares();
+                break;
+            case 0:
                 Console.WriteLine("Saliendo...");
                 break;
             default:
@@ -146,5 +151,68 @@ class Program
         Console.ResetColor();
         Console.WriteLine("¡Espiral completa! Presiona cualquier tecla para salir.");
 
+    }
+    static void DrawSquares()
+    {
+        int consoleWidth = 80;
+        int consoleHeight = 25;
+        int spacing = 3;
+
+        Console.Clear();
+        DrawFirstGroup(consoleWidth, consoleHeight);
+
+        for (int layer = 1; layer <= 3; layer++)
+        {
+            DrawRectangle(layer, consoleWidth, consoleHeight, spacing);
+        }
+
+        Console.ResetColor();
+        Console.SetCursorPosition(0, consoleHeight);
+        Console.WriteLine("\nPresione cualquier tecla para volver al menú...");
+        Console.ReadKey();
+    }
+
+    static void DrawFirstGroup(int consoleWidth, int consoleHeight)
+    {
+        int centerX = (consoleWidth / 2) + 16;  // 🔹 Corrección del centro
+        int centerY = consoleHeight / 2;
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        DrawAt(centerX, centerY);
+        DrawAt(centerX - 1, centerY);
+        DrawAt(centerX + 1, centerY);
+    }
+
+
+    static void DrawRectangle(int layer, int consoleWidth, int consoleHeight, int spacing)
+    {
+        ConsoleColor[] colors = { ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Red, ConsoleColor.Blue };
+        Console.ForegroundColor = colors[layer % colors.Length];
+
+        int centerX = consoleWidth / 2 + 15;
+        int centerY = consoleHeight / 2;
+
+        int width = (layer * spacing * 4);
+        int height = (layer * spacing * 2);
+
+        int startX = centerX - (width / 2) + 1;  // 🔹 Ajuste +1 para corregir desplazamiento
+        int startY = centerY - (height / 2);
+        int endX = startX + width;
+        int endY = startY + height;
+
+        for (int x = startX; x <= endX; x++) DrawAt(x, startY);
+        for (int y = startY + 1; y <= endY; y++) DrawAt(endX, y);
+        for (int x = endX - 1; x >= startX; x--) DrawAt(x, endY);
+        for (int y = endY - 1; y > startY; y--) DrawAt(startX, y);
+    }
+
+    static void DrawAt(int x, int y)
+    {
+        if (x >= 0 && y >= 0 && x < Console.WindowWidth && y < Console.WindowHeight)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write("*");
+            Thread.Sleep(10);
+        }
     }
 }
