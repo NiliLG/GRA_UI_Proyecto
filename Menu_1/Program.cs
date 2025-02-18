@@ -29,7 +29,7 @@ class Program
                 break;
             case 3:
                 Console.Clear();
-                DrawSquares();
+                DibujarCuadrados();
                 break;
             case 0:
                 Console.WriteLine("Saliendo...");
@@ -152,61 +152,60 @@ class Program
         Console.WriteLine("¡Espiral completa! Presiona cualquier tecla para salir.");
 
     }
-    static void DrawSquares()
+    static void DibujarCuadrados()
     {
-        int consoleWidth = 80;
-        int consoleHeight = 25;
-        int spacing = 3;
+        int anchoConsola = 80;
+        int altoConsola = 25;
+        int espacio = 3;
 
         Console.Clear();
-        DrawFirstGroup(consoleWidth, consoleHeight);
+        DibujarPrimerGrupo(anchoConsola, altoConsola);
 
-        for (int layer = 1; layer <= 3; layer++)
+        for (int capa = 1; capa <= 3; capa++)
         {
-            DrawRectangle(layer, consoleWidth, consoleHeight, spacing);
+            DibujarRectangulo(capa, anchoConsola, altoConsola, espacio);
         }
 
         Console.ResetColor();
-        Console.SetCursorPosition(0, consoleHeight);
+        Console.SetCursorPosition(0, altoConsola);
         Console.WriteLine("\nPresione cualquier tecla para volver al menú...");
         Console.ReadKey();
     }
 
-    static void DrawFirstGroup(int consoleWidth, int consoleHeight)
+    static void DibujarPrimerGrupo(int anchoConsola, int altoConsola)
     {
-        int centerX = (consoleWidth / 2) + 16;  // 🔹 Corrección del centro
-        int centerY = consoleHeight / 2;
+        int centroX = (anchoConsola / 2) + 16;  // 🔹 Corrección del centro
+        int centroY = altoConsola / 2;
 
         Console.ForegroundColor = ConsoleColor.Green;
-        DrawAt(centerX, centerY);
-        DrawAt(centerX - 1, centerY);
-        DrawAt(centerX + 1, centerY);
+        DibujarEn(centroX, centroY);
+        DibujarEn(centroX - 1, centroY);
+        DibujarEn(centroX + 1, centroY);
     }
 
-
-    static void DrawRectangle(int layer, int consoleWidth, int consoleHeight, int spacing)
+    static void DibujarRectangulo(int capa, int anchoConsola, int altoConsola, int espacio)
     {
-        ConsoleColor[] colors = { ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Red, ConsoleColor.Blue };
-        Console.ForegroundColor = colors[layer % colors.Length];
+        ConsoleColor[] colores = { ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Red, ConsoleColor.Blue };
+        Console.ForegroundColor = colores[capa % colores.Length];
 
-        int centerX = consoleWidth / 2 + 15;
-        int centerY = consoleHeight / 2;
+        int centroX = anchoConsola / 2 + 15;
+        int centroY = altoConsola / 2;
 
-        int width = (layer * spacing * 4);
-        int height = (layer * spacing * 2);
+        int ancho = (capa * espacio * 4);
+        int alto = (capa * espacio * 2);
 
-        int startX = centerX - (width / 2) + 1;  // 🔹 Ajuste +1 para corregir desplazamiento
-        int startY = centerY - (height / 2);
-        int endX = startX + width;
-        int endY = startY + height;
+        int inicioX = centroX - (ancho / 2) + 1;  // 🔹 Ajuste +1 para corregir desplazamiento
+        int inicioY = centroY - (alto / 2);
+        int finX = inicioX + ancho;
+        int finY = inicioY + alto;
 
-        for (int x = startX; x <= endX; x++) DrawAt(x, startY);
-        for (int y = startY + 1; y <= endY; y++) DrawAt(endX, y);
-        for (int x = endX - 1; x >= startX; x--) DrawAt(x, endY);
-        for (int y = endY - 1; y > startY; y--) DrawAt(startX, y);
+        for (int x = inicioX; x <= finX; x++) DibujarEn(x, inicioY);
+        for (int y = inicioY + 1; y <= finY; y++) DibujarEn(finX, y);
+        for (int x = finX - 1; x >= inicioX; x--) DibujarEn(x, finY);
+        for (int y = finY - 1; y > inicioY; y--) DibujarEn(inicioX, y);
     }
 
-    static void DrawAt(int x, int y)
+    static void DibujarEn(int x, int y)
     {
         if (x >= 0 && y >= 0 && x < Console.WindowWidth && y < Console.WindowHeight)
         {
@@ -215,4 +214,5 @@ class Program
             Thread.Sleep(10);
         }
     }
+
 }
