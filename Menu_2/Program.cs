@@ -19,7 +19,7 @@ class Program
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.SetCursorPosition(25, 2);
-            Console.Write("===== MENÚ PRINCIPAL =====");
+            Console.Write("=====  Localización de vectores y matrices  =====");
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.SetCursorPosition(25, 4);
@@ -1407,7 +1407,6 @@ class Program
     }
 
     //P8
-    // P8 - Versión corregida para desviación estándar muestral
     static void M8()
     {
         int opcion;
