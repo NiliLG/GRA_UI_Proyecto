@@ -17,12 +17,12 @@ namespace FormsGraficos
             InitializeComponent();
         }
         Graphics graphics;
-        int ex=1, ey=1;
+        int ex = 1, ey = 1;
         private void ptbDibujo_Paint(object sender, PaintEventArgs e)
         {
             graphics = e.Graphics;
             Pen pen = new Pen(Color.Blue, 3);
-            Rectangle rectangle = new Rectangle(ex, 50, 50+ey, 50+ex);//punto inicial, medidas (50 de largo y 50 de ancho)
+            Rectangle rectangle = new Rectangle(ex, 50, 50 + ey, 50 + ex);//punto inicial, medidas (50 de largo y 50 de ancho)
             graphics.DrawRectangle(pen, rectangle);
         }
 
@@ -46,6 +46,11 @@ namespace FormsGraficos
                     }
                     break;
             }
+        }
+
+        private void ptbDibujo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

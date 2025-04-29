@@ -1,6 +1,6 @@
-﻿namespace FromsFractales
+﻿namespace FormsGraficos
 {
-    partial class FrmLineas
+    partial class FrmLanzamientoH
     {
         /// <summary>
         /// Required designer variable.
@@ -28,51 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ptbDibujo = new PictureBox();
             pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)ptbDibujo).BeginInit();
+            listBox1 = new ListBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // ptbDibujo
-            // 
-            ptbDibujo.Dock = DockStyle.Fill;
-            ptbDibujo.Location = new Point(0, 0);
-            ptbDibujo.Name = "ptbDibujo";
-            ptbDibujo.Size = new Size(800, 450);
-            ptbDibujo.TabIndex = 0;
-            ptbDibujo.TabStop = false;
-            ptbDibujo.Paint += ptbDibujo_Paint;
-            // 
             // pictureBox1
             // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Location = new Point(2, 1);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(800, 450);
-            pictureBox1.TabIndex = 1;
+            pictureBox1.Size = new Size(1271, 595);
+            pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
+            pictureBox1.Paint += pictureBox1_Paint;
             // 
-            // FrmLineas
+            // listBox1
+            // 
+            listBox1.FormattingEnabled = true;
+            listBox1.Location = new Point(1288, 12);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(235, 584);
+            listBox1.TabIndex = 1;
+            // 
+            // FrmLanzamientoH
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1535, 608);
+            Controls.Add(listBox1);
             Controls.Add(pictureBox1);
-            Controls.Add(ptbDibujo);
-            Name = "FrmLineas";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "FrmLineas";
-            Load += FrmLineas_Load;
-            ((System.ComponentModel.ISupportInitialize)ptbDibujo).EndInit();
+            Name = "FrmLanzamientoH";
+            Text = "FrmLanzamientoH";
+            Load += FrmLanzamientoH_Load;
+            KeyDown += FrmLanzamientoH_KeyDown;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private PictureBox ptbDibujo;
         private PictureBox pictureBox1;
+        private ListBox listBox1;
     }
 }

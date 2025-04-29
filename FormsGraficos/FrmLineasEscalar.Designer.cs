@@ -40,6 +40,7 @@
             ptbDibujo.Size = new Size(800, 450);
             ptbDibujo.TabIndex = 1;
             ptbDibujo.TabStop = false;
+            ptbDibujo.Click += ptbDibujo_Click;
             ptbDibujo.Paint += ptbDibujo_Paint;
             // 
             // FrmLineasEscalar

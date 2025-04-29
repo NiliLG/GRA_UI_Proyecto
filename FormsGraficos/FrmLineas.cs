@@ -21,13 +21,18 @@ namespace FromsFractales
         {
             graphics = e.Graphics;
             Pen pen = new Pen(Color.Blue, 3);
-            graphics.DrawLine(pen, new Point(50,50), new Point(100, 50));//col, fil
+            graphics.DrawLine(pen, new Point(50, 50), new Point(100, 50));//col, fil
             graphics.DrawLine(pen, new Point(100, 50), new Point(100, 100));
-            graphics.DrawLine(pen, new Point(100,100), new Point(50, 100));
-            graphics.DrawLine(pen, new Point(50, 100), new Point(50,50));
+            graphics.DrawLine(pen, new Point(100, 100), new Point(50, 100));
+            graphics.DrawLine(pen, new Point(50, 100), new Point(50, 50));
         }
 
         private void FrmLineas_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
